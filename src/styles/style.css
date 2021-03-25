@@ -19,6 +19,7 @@
   --orange-dark: #ea7600;
   --blue: #1085c5;
   --primary: var(--orange);
+  --primary-additional: var(--orange-dark);
   --contrast: var(--blue);
   --the-lightest: var(--white);
 
@@ -141,6 +142,9 @@ footer h3 {
 /* END remove vertical spaces */
 
 /* layout */
+main {
+  overflow: hidden;
+}
 
 header .inner,
 section .inner,
@@ -153,6 +157,23 @@ header,
 section,
 footer {
   padding: 100px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container .box {
+  flex: 1;
+}
+
+.container .box:first-child {
+  padding-right: 15px;
+}
+
+.container .box:last-child {
+  padding-left: 15px;
 }
 
 footer .container {
@@ -181,7 +202,7 @@ footer .box:last-child {
 }
 
 img {
-  max-width: 100%;
+  /* max-width: 100%; */
 
   filter: drop-shadow(0px 16px 32px rgba(0, 0, 0, 0.15));
 }
@@ -210,14 +231,29 @@ body {
   color: var(--grey-dark);
 }
 
-.deco {
-  background-color: var(--primary);
+.story {
+  overflow: hidden;
 }
 
 .story .inner {
-  background-image: url(../assets/img/tota.png);
-  background-repeat: no-repeat;
-  background-position: 310px 55px;
+  position: relative;
+}
+
+.story .container {
+  margin-top: 195px;
+}
+
+.story h1 {
+  position: relative;
+  z-index: 1;
+}
+
+.story img {
+  position: absolute;
+  top: -55px;
+  right: -270px;
+  z-index: 0;
+  height: 525px;
 }
 
 button {
@@ -326,6 +362,27 @@ footer .container {
 /* END additional classes for colors */
 
 /* links */
+a.more:link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+
+  color: var(--white);
+  font-weight: bold;
+  text-decoration: none;
+
+  background-color: var(--primary);
+}
+
+a.more:visited {
+  background-color: var(--primary-additional);
+}
+
+a.more:hover,
+a.more:active,
+a.more:focus {
+  background-color: var(--primary-additional);
+}
 
 form a:link,
 form a:visited {
@@ -352,5 +409,3 @@ form a:focus {
 /* END links */
 
 /* END colors */
-
-/* test */
