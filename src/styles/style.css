@@ -1,10 +1,23 @@
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
-/* variables */
+/* SMALL RESET */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin-top: 0;
+}
+
+/* VARIABLES */
 
 :root {
   --white: #fff;
@@ -23,14 +36,10 @@
   --contrast: var(--blue);
   --the-lightest: var(--white);
 
-  /* sizes */
-
   --content-max-width: 1110px;
 }
 
-/* END variables */
-
-/* fonts */
+/* FONTS */
 
 @font-face {
   font-weight: 400;
@@ -81,13 +90,17 @@ h2 {
   line-height: 1.2em;
 }
 
+nav h2 {
+  font-size: 52px;
+}
+
 h3,
 .intro {
   font-size: 34px;
   line-height: 1.2em;
 }
 
-h3.content {
+h3.text-block {
   font-weight: 700;
   font-size: 16px;
   font-family: OpenSans, sans-serif;
@@ -95,6 +108,7 @@ h3.content {
 
 .number {
   font-size: 64px;
+  line-height: 1;
 }
 
 .lead {
@@ -114,50 +128,42 @@ h3.content {
   font-family: OpenSans, sans-serif;
 }
 
-/* END fonts */
+/* LAYOUT */
 
-/* small reset */
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/* END small reset */
-
-/* remove vertical spaces */
-
-h1,
-h2,
-h3,
-p,
-ul {
-  margin-top: 0;
-}
-
-footer h3 {
-  margin-bottom: 0;
-}
-
-/* END remove vertical spaces */
-
-/* layout */
 main {
   overflow: hidden;
 }
 
+header,
+section,
+nav,
+footer {
+  padding: 100px 0;
+}
+
 header .inner,
 section .inner,
+nav .inner,
 footer .inner {
   max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
-header,
-section,
-footer {
-  padding: 100px 0;
+img {
+  /* max-width: 100%; */
+
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
 }
+
+button {
+  border: 0;
+}
+
+h3.text-block {
+  padding: 6px 10px 4px 10px;
+}
+
+/* TEXTCONTAINER IN HEADER, SECTIONS, FOOTER */
 
 .container {
   display: flex;
@@ -176,44 +182,59 @@ footer {
   padding-left: 15px;
 }
 
-footer .container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 55px;
+/* HEADER */
+
+.story {
+  overflow: hidden;
 }
 
-footer .box {
-  flex: 1;
+.story .inner {
+  position: relative;
 }
 
-footer .box:first-child {
-  padding-top: 55px;
-  padding-bottom: 55px;
+.story .container {
+  margin-top: 195px;
 }
 
-footer .box:last-child {
-  padding: 38px 0 40px 15px;
+.story h1 {
+  position: relative;
+  z-index: 1;
 }
 
-.page-info-additional {
-  margin-top: 76px;
+.story img {
+  position: absolute;
+  top: -55px;
+  right: -270px;
+  z-index: 0;
 
-  text-align: center;
+  height: 525px;
 }
 
-img {
-  /* max-width: 100%; */
+/* button-link in header */
 
-  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
+a.more:link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+
+  color: var(--white);
+  font-weight: bold;
+  text-decoration: none;
+
+  background-color: var(--primary);
 }
 
-button {
-  border: 0;
+a.more:visited {
+  background-color: var(--primary-additional);
 }
 
-h3.content {
-  padding: 6px 10px 4px 10px;
+a.more:hover,
+a.more:active,
+a.more:focus {
+  background-color: var(--primary-additional);
 }
+
+/* SECTION VIDEO */
 
 .video {
   display: flex;
@@ -245,171 +266,77 @@ h3.content {
   filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
 }
 
-/* END layout */
+/* SECTION NAVIGATION */
 
-/* colors and background-images */
+nav .inner {
+  display: grid; 
+  grid-column-gap: 30px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
 
-html {
-  background-color: var(--grey-the-lightest);
+  margin-top: 100px;
 }
 
-body {
+nav h2 {
+  margin: 0;
+}
+
+.number {
+  margin-bottom: 40px;
+}
+
+.nav-box {
+  display: block;
+  padding: 24px;
+
   color: var(--grey-dark);
-}
-
-.story {
-  overflow: hidden;
-}
-
-.story .inner {
-  position: relative;
-}
-
-.story .container {
-  margin-top: 195px;
-}
-
-.story h1 {
-  position: relative;
-  z-index: 1;
-}
-
-.story img {
-  position: absolute;
-  top: -55px;
-  right: -270px;
-  z-index: 0;
-
-  height: 525px;
-}
-
-button {
-  border: 0;
-
-  color: var(--white);
-
-  background-color: var(--primary);
-}
-
-footer {
-  background-color: var(--the-lightest);
-}
-
-footer .container {
-  color: var(--the-lightest);
-
-  background-color: var(--grey-middle);
-}
-
-/* themes */
-.theme-color-white {
-  background-color: var(--white);
-}
-
-.theme-color-default,
-.theme-color-invert {
-  background-image: url(../assets/img/background-pattern.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* --- */
-
-.theme-color-default {
-  background-color: var(--light1);
-}
-
-.theme-color-default .lead {
-  color: var(--grey-light);
-}
-
-.theme-color-default h3.content {
-  color: var(--white);
-
-  background-color: var(--light3-brown);
-}
-
-/* --- */
-
-.theme-color-invert {
-  color: var(--white);
-
-  background-color: var(--light3-brown);
-}
-
-.theme-color-invert .lead {
-  color: var(--light2);
-}
-
-.theme-color-invert h3.content {
-  color: var(--light3-brown);
-
-  background-color: var(--white);
-}
-
-/* --- */
-
-.theme-color-dark {
-  background-color: var(--grey-middle);
-}
-
-.theme-color-dark .box:not(:first-child) {
-  background-color: var(--light1);
-}
-
-.theme-color-dark h2 {
-  color: var(--white);
-}
-
-.theme-color-dark h3 {
-  color: var(--primary);
-}
-
-/* END themes */
-
-/* additional classes for colors */
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--grey-light);
-
-  opacity: 1;
-
-  /* opacity is for Firefox */
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: var(--grey-light);
-}
-
-.emphasis {
-  color: var(--primary);
-}
-
-/* END additional classes for colors */
-
-/* links */
-a.more:link {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-
-  color: var(--white);
-  font-weight: bold;
   text-decoration: none;
 
+  background-color: var(--light1);
+}
+
+.nav-box h3 {
+  color: var(--primary);
+}
+
+.nav-box:hover,
+.nav-box:hover h3 {
+  color: var(--white);
   background-color: var(--primary);
 }
 
-a.more:visited {
-  background-color: var(--primary-additional);
+/* FOOTER */
+
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 55px;
 }
 
-a.more:hover,
-a.more:active,
-a.more:focus {
-  background-color: var(--primary-additional);
+footer .box {
+  flex: 1;
 }
+
+footer .box:first-child {
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+
+footer .box:last-child {
+  padding: 38px 0 40px 15px;
+}
+
+.page-info-additional {
+  margin-top: 76px;
+
+  text-align: center;
+}
+
+footer h3 {
+  margin-bottom: 0;
+}
+
+/* links in footer */
 
 form a:link,
 form a:visited {
@@ -433,6 +360,105 @@ form a:focus {
   color: var(--grey-dark);
 }
 
-/* END links */
+/* COLORS AND BACKGROUND-IMAGES */
 
-/* END colors */
+html {
+  background-color: var(--grey-the-lightest);
+}
+
+body {
+  color: var(--grey-dark);
+}
+
+button {
+  border: 0;
+
+  color: var(--white);
+
+  background-color: var(--primary);
+}
+
+footer {
+  background-color: var(--the-lightest);
+}
+
+footer .container {
+  color: var(--the-lightest);
+
+  background-color: var(--grey-middle);
+}
+
+/* THEMES */
+.theme-color-white {
+  background-color: var(--white);
+}
+
+.theme-color-default,
+.theme-color-invert {
+  background-image: url(../assets/img/background-pattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* --- */
+
+.theme-color-default {
+  background-color: var(--light1);
+}
+
+.theme-color-default .lead {
+  color: var(--grey-light);
+}
+
+.theme-color-default h3.text-block {
+  color: var(--white);
+
+  background-color: var(--light3-brown);
+}
+
+/* --- */
+
+.theme-color-invert {
+  color: var(--white);
+
+  background-color: var(--light3-brown);
+}
+
+.theme-color-invert .lead {
+  color: var(--light2);
+}
+
+.theme-color-invert h3.text-block {
+  color: var(--light3-brown);
+
+  background-color: var(--white);
+}
+
+/* --- */
+
+.theme-color-dark {
+  background-color: var(--grey-middle);
+}
+
+.theme-color-dark h2 {
+  color: var(--white);
+}
+
+/* ADDITIONAL CLASSES FOR COLORS */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--grey-light);
+
+  opacity: 1;
+
+  /* opacity is for Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--grey-light);
+}
+
+.emphasis {
+  color: var(--primary);
+}
