@@ -160,6 +160,8 @@ button {
 }
 
 h3.text-block {
+  margin-top: 100px;
+  margin-bottom: 20px;
   padding: 6px 10px 4px 10px;
 }
 
@@ -303,6 +305,16 @@ nav h2 {
 .nav-box:hover h3 {
   color: var(--white);
   background-color: var(--primary);
+}
+
+/* SECTIONS COMMON */
+
+p.intro:first-child {
+  margin-top: 20px;
+}
+
+p.intro:last-child {
+  margin-bottom: 0;
 }
 
 /* FOOTER */
