@@ -261,11 +261,13 @@
                 <div class="box">
                     <form action="#" method="post">
                         <label for="email">Электронная почта</label>
-                        <input type="email" name="email" id="email" placeholder="Ваша электронная почта">
-                        <button name="button-email">
-                            <img src="assets/img/send.png" alt="отправить ваш E-Mail адрес">
-                        </button>
-                        <p>Подписываясь, вы принимаете <a href="#">правила сервиса</a></p>
+                        <div class="send-email">
+                            <input type="email" name="email" id="email" placeholder="Ваша электронная почта">
+                            <button type="submit" name="button-email">
+                                <img src="assets/img/send.svg" alt="отправить ваш E-Mail адрес">
+                            </button>
+                        </div>
+                        <p class="small">Подписываясь, вы принимаете <a href="#">правила сервиса</a></p>
                     </form>
                 </div>
             </div>
@@ -277,5 +279,4 @@
         </div>
     </footer>
 </body>
-
 </html>
