@@ -1,24 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h2 {
-  margin-bottom: 0;
-}
-
 /* VARIABLES */
 
 :root {
@@ -36,6 +15,39 @@ h2 {
   --primary: var(--orange);
   --primary-additional: var(--orange-dark);
   --contrast: var(--blue);
+}
+
+/* COMMON */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+button {
+  color: var(--white);
+
+  background-color: var(--primary);
+}
+
+button:hover {
+  background-color: var(--primary-additional);
 }
 
 /* FONTS */
@@ -59,6 +71,8 @@ h2 {
 }
 
 body {
+  color: var(--grey-dark);
+
   font-weight: 400;
   font-size: 16px;
   font-family: OpenSans, sans-serif;
@@ -96,6 +110,10 @@ h3,
 }
 
 h3.deco {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  padding: 6px 10px 4px 10px;
+
   font-weight: 700;
   font-size: 16px;
   font-family: OpenSans, sans-serif;
@@ -108,6 +126,8 @@ h3.deco {
 }
 
 .lead {
+  margin: 0;
+
   font-size: 28px;
 }
 
@@ -119,11 +139,13 @@ h3.deco {
   font-size: 12px;
 }
 
-::placeholder,
-::-ms-input-placeholder {
+::placeholder {
+  color: var(--grey-light);
   font-weight: 400;
   font-size: 12px;
   font-family: OpenSans, sans-serif;
+
+  opacity: 1;
 }
 
 /* LAYOUT */
@@ -148,129 +170,6 @@ section > .inner,
 }
 
 img.deco {
-  /*display: block;*/
-
-  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
-}
-
-h3.deco {
-  margin-top: 100px;
-  margin-bottom: 20px;
-  padding: 6px 10px 4px 10px;
-}
-
-/* TEXTCONTAINER IN HEADER, SECTIONS, FOOTER */
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.container > .box {
-  flex: 1;
-}
-
-.container > .box:first-child {
-  padding-right: 15px;
-}
-
-.container > .box:last-child {
-  padding-left: 15px;
-}
-
-.container > .box p:first-child {
-  /* wegen des collapsing-margins. Das funktioniert nicht in den flex-boxes. Nach einer anderen Lösung suchen. */
-  margin-top: 0;
-}
-
-.container > .box p:last-child {
-  /* wegen des collapsing-margins. Das funktioniert nicht in den flex-boxes. Nach einer anderen Lösung suchen. */
-  margin-bottom: 0;
-}
-
-/* HEADER */
-
-.page-header {
-  overflow: hidden;
-}
-
-.page-header .inner {
-  position: relative;
-}
-
-.page-header .container {
-  margin-top: 195px;
-}
-
-.page-header h1 {
-  position: relative;
-  z-index: 1;
-}
-
-.page-header img {
-  position: absolute;
-  top: -50px;
-  right: -270px;
-  z-index: 0;
-
-  height: 525px;
-}
-
-/* HEADER button-link */
-
-a.more:link {
-  display: table; /* so we can use collapsing margins in this context */
-
-  margin-top: 40px;
-  padding: 12px 24px;
-
-  color: var(--white);
-  font-weight: bold;
-  text-decoration: none;
-
-  background-color: var(--primary);
-}
-
-a.more:visited {
-  color: var(--white);
-
-  background-color: var(--primary);
-}
-
-a.more:hover,
-a.more:active,
-a.more:focus {
-  color: var(--white);
-
-  background-color: var(--primary-additional);
-}
-
-/* SECTION VIDEO */
-
-section.video {
-  margin-bottom: -200px;
-
-  text-align: center;
-}
-
-section.video .inner {
-  position: relative;
-}
-
-section.video h2 {
-  margin-bottom: 30px;
-  margin-bottom: 24px; /* TMP solution. The Problem: collapsing-margins */
-}
-
-section.video p {
-  margin-bottom: 30px;
-}
-
-section.video iframe {
-  max-width: 100%;
-
-  border: 0;
-
   filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
 }
 
@@ -305,7 +204,7 @@ section.video iframe {
   margin-bottom: 10px;
 }
 
-.number {
+.page-nav .number {
   display: block;
 
   /* margin-top: 6px; TMP solution */
@@ -326,18 +225,136 @@ section.video iframe {
 
 /* SECTIONS COMMON */
 
-.box h2,
-.lead {
-  margin: 0;
-  /* padding: 0; */
-}
-
 p.intro {
   margin-top: 20px;
 }
 
-p.intro:last-child {
-  /*margin-bottom: 0;*/
+/* SECTION VIDEO */
+
+.video {
+  margin-bottom: -200px;
+
+  text-align: center;
+}
+
+.video .inner {
+  position: relative;
+}
+
+.video h2 {
+  margin-bottom: 30px;
+  margin-bottom: 24px;
+
+  /* TMP solution. The Problem: collapsing-margins */
+}
+
+.video p {
+  margin-bottom: 30px;
+}
+
+.video iframe {
+  max-width: 100%;
+
+  border: 0;
+
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
+}
+
+/* TEXTCONTAINER IN HEADER, SECTIONS, FOOTER */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container > .box {
+  flex: 1;
+}
+
+.box h2 {
+  margin: 0;
+}
+
+.page-footer form p:last-child {
+  margin: 0;
+}
+
+.container > .box:first-child {
+  padding-right: 15px;
+}
+
+.container > .box:last-child {
+  padding-left: 15px;
+}
+
+.container > .box p:first-child {
+  /* wegen des collapsing-margins. Das funktioniert nicht in den flex-boxes. Nach einer anderen Lösung suchen. */
+
+  margin-top: 0;
+}
+
+.container > .box p:last-child {
+  /* wegen des collapsing-margins. Das funktioniert nicht in den flex-boxes. Nach einer anderen Lösung suchen. */
+
+  margin-bottom: 0;
+}
+
+/* HEADER */
+
+.page-header {
+  overflow: hidden;
+}
+
+.page-header .inner {
+  position: relative;
+}
+
+.page-header .container {
+  margin-top: 195px;
+}
+
+.page-header h1 {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header img {
+  position: absolute;
+  top: -50px;
+  right: -270px;
+  z-index: 0;
+
+  height: 525px;
+}
+
+/* HEADER button-link */
+
+a.more:link {
+  display: table;
+
+  /* so we can use collapsing margins in this context */
+
+  margin-top: 40px;
+  padding: 12px 24px;
+
+  color: var(--white);
+  font-weight: bold;
+  text-decoration: none;
+
+  background-color: var(--primary);
+}
+
+a.more:visited {
+  color: var(--white);
+
+  background-color: var(--primary);
+}
+
+a.more:hover,
+a.more:active,
+a.more:focus {
+  color: var(--white);
+
+  background-color: var(--primary-additional);
 }
 
 /* FOOTER */
@@ -355,15 +372,21 @@ p.intro:last-child {
   padding: 38px 0 40px 15px;
 }
 
-.page-info-additional {
+.page-footer .page-info-additional {
   margin-top: 76px;
 
   text-align: center;
 }
 
-.page-footer h3 {
+.page-footer .box h3 {
   margin-bottom: 0;
 }
+
+/*
+The structure .page-footer .box h3 is not nesessary.
+.page-footer h3 is correct.
+It's only because of css-lint :-(
+*/
 
 /* FOOTER formular */
 
@@ -398,10 +421,6 @@ p.intro:last-child {
   cursor: pointer;
 }
 
-.page-footer form p:last-child {
-  margin: 0;
-}
-
 /* FOOTER links */
 
 .page-info-additional a:link,
@@ -419,20 +438,6 @@ p.intro:last-child {
 
 html {
   background-color: var(--grey-the-lightest);
-}
-
-body {
-  color: var(--grey-dark);
-}
-
-button {
-  color: var(--white);
-
-  background-color: var(--primary);
-}
-
-button:hover {
-  background-color: var(--primary-additional);
 }
 
 .page-footer {
@@ -496,6 +501,8 @@ button:hover {
   color: var(--white);
 }
 
+/* --- */
+
 .theme-color-ultra-dark {
   color: var(--white);
 
@@ -515,13 +522,6 @@ button:hover {
 
 /* ADDITIONAL CLASSES FOR COLORS */
 
-::placeholder,
-::-ms-input-placeholder {
-  color: var(--grey-light);
-
-  opacity: 1;
-}
-
 .emphasis {
   color: var(--primary);
 }
@@ -530,8 +530,4 @@ button:hover {
 
 .workaround {
   margin-top: 6px;
-}
-
-img {
-  vertical-align: middle;
 }
