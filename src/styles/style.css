@@ -11,9 +11,12 @@ body {
 h1,
 h2,
 h3,
-p,
-ul {
+p {
   margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 0;
 }
 
 /* VARIABLES */
@@ -33,11 +36,6 @@ ul {
   --primary: var(--orange);
   --primary-additional: var(--orange-dark);
   --contrast: var(--blue);
-  --the-lightest: var(--white);
-
-  /* sizes */
-
-  --content-max-width: 1110px;
 }
 
 /* FONTS */
@@ -60,13 +58,9 @@ ul {
   src: url(../assets/fonts/Neucha-Regular.ttf);
 }
 
-html {
-  font-size: 16px;
-}
-
 body {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 16px;
   font-family: OpenSans, sans-serif;
   line-height: 1.6em;
 }
@@ -91,7 +85,7 @@ h2 {
   line-height: 1.2em;
 }
 
-nav h2 {
+.page-nav h2 {
   font-size: 52px;
 }
 
@@ -101,10 +95,11 @@ h3,
   line-height: 1.2em;
 }
 
-h3.text-block {
+h3.deco {
   font-weight: 700;
   font-size: 16px;
   font-family: OpenSans, sans-serif;
+  text-transform: uppercase;
 }
 
 .number {
@@ -127,7 +122,7 @@ h3.text-block {
 ::placeholder,
 ::-ms-input-placeholder {
   font-weight: 400;
-  font-size: small;
+  font-size: 12px;
   font-family: OpenSans, sans-serif;
 }
 
@@ -137,28 +132,28 @@ main {
   overflow: hidden;
 }
 
-header,
 section,
-nav,
-footer {
+.page-header,
+.page-nav,
+.page-footer {
   padding: 100px 0;
 }
 
-header > .inner,
 section > .inner,
-nav > .inner,
-footer > .inner {
-  max-width: var(--content-max-width);
+.page-header > .inner,
+.page-nav > .inner,
+.page-footer > .inner {
+  max-width: 1110px;
   margin: 0 auto;
 }
 
-img {
-  display: block;
+img.deco {
+  /*display: block;*/
 
   filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.15));
 }
 
-h3.text-block {
+h3.deco {
   margin-top: 100px;
   margin-bottom: 20px;
   padding: 6px 10px 4px 10px;
@@ -183,39 +178,50 @@ h3.text-block {
   padding-left: 15px;
 }
 
+.container > .box p:first-child {
+  /* wegen des collapsing-margins. Das funktioniert nicht in den flex-boxes. Nach einer anderen Lösung suchen. */
+  margin-top: 0;
+}
+
+.container > .box p:last-child {
+  /* wegen des collapsing-margins. Das funktioniert nicht in den flex-boxes. Nach einer anderen Lösung suchen. */
+  margin-bottom: 0;
+}
+
 /* HEADER */
 
-.story {
+.page-header {
   overflow: hidden;
 }
 
-.story .inner {
+.page-header .inner {
   position: relative;
 }
 
-.story .container {
+.page-header .container {
   margin-top: 195px;
 }
 
-.story h1 {
+.page-header h1 {
   position: relative;
   z-index: 1;
 }
 
-.story img {
+.page-header img {
   position: absolute;
-  top: -55px;
+  top: -50px;
   right: -270px;
   z-index: 0;
 
   height: 525px;
 }
 
-/* button-link in header */
+/* HEADER button-link */
 
 a.more:link {
-  display: inline-block;
-  margin-top: 20px;
+  display: table; /* so we can use collapsing margins in this context */
+
+  margin-top: 40px;
   padding: 12px 24px;
 
   color: var(--white);
@@ -241,31 +247,26 @@ a.more:focus {
 
 /* SECTION VIDEO */
 
-.video {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+section.video {
   margin-bottom: -200px;
 
   text-align: center;
 }
 
-.video .inner {
+section.video .inner {
   position: relative;
 }
 
-.video h2 {
+section.video h2 {
+  margin-bottom: 30px;
+  margin-bottom: 24px; /* TMP solution. The Problem: collapsing-margins */
+}
+
+section.video p {
   margin-bottom: 30px;
 }
 
-.video p {
-  margin-top: 0;
-  margin-bottom: 30px;
-}
-
-.video iframe {
-  display: block;
+section.video iframe {
   max-width: 100%;
 
   border: 0;
@@ -275,7 +276,7 @@ a.more:focus {
 
 /* SECTION NAVIGATION */
 
-#navigation .inner {
+.page-nav .inner {
   display: grid;
 
   grid-row-gap: 20px;
@@ -283,22 +284,6 @@ a.more:focus {
   grid-template-columns: repeat(3, 1fr);
 
   margin-top: 100px;
-}
-
-#navigation h3 {
-  margin-bottom: 10px;
-}
-
-#navigation h2,
-#navigation p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.number {
-  display: block;
-  margin-top: 6px;
-  margin-bottom: 40px;
 }
 
 .nav-box {
@@ -309,6 +294,23 @@ a.more:focus {
   text-decoration: none;
 
   background-color: var(--light1);
+}
+
+.page-nav h2,
+.page-nav p {
+  margin-bottom: 0;
+}
+
+.page-nav h3 {
+  margin-bottom: 10px;
+}
+
+.number {
+  display: block;
+
+  /* margin-top: 6px; TMP solution */
+
+  margin-bottom: 40px;
 }
 
 .nav-box h3 {
@@ -324,14 +326,10 @@ a.more:focus {
 
 /* SECTIONS COMMON */
 
-.box h2 {
-  margin: 0;
-  padding: 0;
-}
-
+.box h2,
 .lead {
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
 }
 
 p.intro {
@@ -339,21 +337,21 @@ p.intro {
 }
 
 p.intro:last-child {
-  margin-bottom: 0;
+  /*margin-bottom: 0;*/
 }
 
 /* FOOTER */
 
-footer .container {
+.page-footer .container {
   padding: 0 55px;
 }
 
-footer .box:first-child {
+.page-footer .box:first-child {
   padding-top: 55px;
   padding-bottom: 55px;
 }
 
-footer .box:last-child {
+.page-footer .box:last-child {
   padding: 38px 0 40px 15px;
 }
 
@@ -363,23 +361,23 @@ footer .box:last-child {
   text-align: center;
 }
 
-footer h3 {
+.page-footer h3 {
   margin-bottom: 0;
 }
 
 /* FOOTER formular */
 
-footer label {
+.page-footer label {
   display: block;
   margin-bottom: 12px;
 }
 
-.send-email {
+.page-footer .send-email {
   display: flex;
   flex-wrap: wrap;
 }
 
-input[type="email"] {
+.page-footer input[type="email"] {
   flex: 1 1 auto;
   height: 50px;
   padding: 15px;
@@ -387,7 +385,7 @@ input[type="email"] {
   border: 0;
 }
 
-.send-email button {
+.page-footer .send-email button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,22 +398,11 @@ input[type="email"] {
   cursor: pointer;
 }
 
-footer form p:last-child {
+.page-footer form p:last-child {
   margin: 0;
 }
 
 /* FOOTER links */
-
-form a:link,
-form a:visited {
-  color: var(--white);
-}
-
-form a:hover,
-form a:active,
-form a:focus {
-  color: var(--primary);
-}
 
 .page-info-additional a:link,
 .page-info-additional a:visited {
@@ -448,14 +435,8 @@ button:hover {
   background-color: var(--primary-additional);
 }
 
-footer {
-  background-color: var(--the-lightest);
-}
-
-footer .container {
-  color: var(--the-lightest);
-
-  background-color: var(--grey-middle);
+.page-footer {
+  background-color: var(--white);
 }
 
 /* THEMES */
@@ -481,7 +462,7 @@ footer .container {
   color: var(--grey-light);
 }
 
-.theme-color-default h3.text-block {
+.theme-color-default h3.deco {
   color: var(--white);
 
   background-color: var(--light3-brown);
@@ -499,7 +480,7 @@ footer .container {
   color: var(--light2);
 }
 
-.theme-color-invert h3.text-block {
+.theme-color-invert h3.deco {
   color: var(--light3-brown);
 
   background-color: var(--white);
@@ -515,7 +496,25 @@ footer .container {
   color: var(--white);
 }
 
+.theme-color-ultra-dark {
+  color: var(--white);
+
+  background-color: var(--grey-middle);
+}
+
+.theme-color-ultra-dark a:link,
+.theme-color-ultra-dark a:visited {
+  color: var(--white);
+}
+
+.theme-color-ultra-dark a:hover,
+.theme-color-ultra-dark a:active,
+.theme-color-ultra-dark a:focus {
+  color: var(--primary);
+}
+
 /* ADDITIONAL CLASSES FOR COLORS */
+
 ::placeholder,
 ::-ms-input-placeholder {
   color: var(--grey-light);
@@ -525,4 +524,14 @@ footer .container {
 
 .emphasis {
   color: var(--primary);
+}
+
+/* WORKAROUNDS TMP */
+
+.workaround {
+  margin-top: 6px;
+}
+
+img {
+  vertical-align: middle;
 }
